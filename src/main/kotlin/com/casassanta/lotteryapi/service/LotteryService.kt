@@ -1,6 +1,7 @@
 package com.casassanta.lotteryapi.service
 
 import com.casassanta.lotteryapi.controller.request.LotteryGameRequest
+import com.casassanta.lotteryapi.exception.InvalidAmountNumbersMegaSenaException
 import org.springframework.stereotype.Service
 import kotlin.random.Random
 
@@ -18,7 +19,10 @@ class LotteryService {
 
 
     private fun generateMegaSena(amountNumbers: Int): List<Int> {
-        return List(amountNumbers) { Random.nextInt(1,60)}
+        if(amountNumbers in 6..15){
+            return List(amountNumbers) { Random.nextInt(1,  60)}
+        }
+        else throw InvalidAmountNumbersMegaSenaException()
     }
 
 }

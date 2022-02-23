@@ -6,6 +6,9 @@ data class LotteryGameRequest(
     val lottery: String,
 
     @JsonAlias("amount_numbers")
-    val amountNumbers: Int
+    val amountNumbers: Int,
+
+    @JsonAlias("amount_games")
+    val amountGames: Int
 )
 

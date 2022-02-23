@@ -12,7 +12,7 @@ class LotteryController(
 ) {
 
     @PostMapping("/api/lotteries")
-    fun generateLotteryGames(@RequestBody lotteryGameRequest: LotteryGameRequest): List<Int>{
+    fun generateLotteryGames(@RequestBody lotteryGameRequest: LotteryGameRequest): ArrayList<List<Int>>{
         return lotteryService.generateLotteryGames(lotteryGameRequest)
     }
 }

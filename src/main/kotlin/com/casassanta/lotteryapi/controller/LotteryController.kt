@@ -1,6 +1,7 @@
 package com.casassanta.lotteryapi.controller
 
 import com.casassanta.lotteryapi.controller.request.LotteryGameRequest
+import com.casassanta.lotteryapi.controller.response.LotteryGameResponse
 import com.casassanta.lotteryapi.service.LotteryService
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -12,7 +13,7 @@ class LotteryController(
 ) {
 
     @PostMapping("/api/lotteries")
-    fun generateLotteryGames(@RequestBody lotteryGameRequest: LotteryGameRequest): ArrayList<List<Int>>{
+    fun generateLotteryGames(@RequestBody lotteryGameRequest: LotteryGameRequest): LotteryGameResponse{
         return lotteryService.generateLotteryGames(lotteryGameRequest)
     }
 }

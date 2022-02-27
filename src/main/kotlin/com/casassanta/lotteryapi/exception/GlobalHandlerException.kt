@@ -22,6 +22,16 @@ class GlobalHandlerException {
         )
     }
 
+    @ExceptionHandler(InvalidAmountNumbersLotoFacilException::class)
+    fun handleInvalidAmountNumbersLotoFacilException(e: InvalidAmountNumbersLotoFacilException): ResponseEntity<String>{
+        logger.info("Handling Invalid Amount of Numbers for LotoFacil", e)
+
+        return ResponseEntity<String>(
+            e.message,
+            HttpStatus.BAD_REQUEST
+        )
+    }
+
     @ExceptionHandler(InvalidAmountGamesException::class)
     fun handleInvalidAmountGamesException(e: InvalidAmountGamesException): ResponseEntity<String>{
         logger.info("Handling Invalid Amount of Games for the Lottery", e)

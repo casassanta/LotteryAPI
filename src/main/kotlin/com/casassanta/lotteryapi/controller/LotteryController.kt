@@ -18,9 +18,4 @@ class LotteryController(
         return lotteryService.generateLotteryGames(lotteryGameRequest)
     }
 
-    @GetMapping("/api/test")
-    fun test(): String{
-        return "Hello World!"
-    }
-
 }

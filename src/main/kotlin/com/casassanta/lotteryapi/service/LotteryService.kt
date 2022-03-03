@@ -15,11 +15,25 @@ class LotteryService {
 
         if(lotteryGameRequest.lottery == "MEGASENA"){
             if(isValidMegaSena(lotteryGameRequest.amountNumbers, lotteryGameRequest.amountGames))
-                return lotteryGameRequest.toLotteryGameResponse(generateMegaSena(lotteryGameRequest.amountNumbers, lotteryGameRequest.amountGames))
+                return lotteryGameRequest.toLotteryGameResponse(
+                    generateGames(
+                        lotteryGameRequest.amountNumbers,
+                        lotteryGameRequest.amountGames,
+                        1,
+                        60
+                    )
+                )
         }
         if(lotteryGameRequest.lottery == "LOTOFACIL"){
             if(isValidLotoFacil(lotteryGameRequest.amountNumbers, lotteryGameRequest.amountGames))
-                return lotteryGameRequest.toLotteryGameResponse(generateLotoFacil(lotteryGameRequest.amountNumbers, lotteryGameRequest.amountGames))
+                return lotteryGameRequest.toLotteryGameResponse(
+                    generateGames(
+                        lotteryGameRequest.amountNumbers,
+                        lotteryGameRequest.amountGames,
+                        1,
+                        26
+                    )
+                )
         }
 
         return lotteryGameRequest.toLotteryGameResponse(emptyList())
@@ -49,24 +63,13 @@ class LotteryService {
         return false
     }
 
-    private fun generateMegaSena(amountNumbers: Int, amountGames: Int): ArrayList<List<Int>> {
+    private fun generateGames(amountNumbers: Int, amountGames: Int, rangeMin: Int, rangeMax: Int): ArrayList<List<Int>> {
         val games = ArrayList<List<Int>>()
 
         for (i in 1..amountGames) {
-            games.add(List(amountNumbers) { Random.nextInt(1, 61) })
+            games.add(List(amountNumbers) { Random.nextInt(rangeMin, rangeMax) })
         }
         return games
     }
-
-    private fun generateLotoFacil(amountNumbers: Int, amountGames: Int): ArrayList<List<Int>> {
-        val games = ArrayList<List<Int>>()
-
-        for (i in 1..amountGames) {
-            games.add(List(amountNumbers) { Random.nextInt(1, 26) })
-        }
-        return games
-    }
-
-
-
+    
 }

@@ -18,4 +18,9 @@ class LotteryController(
         return lotteryService.generateLotteryGames(lotteryGameRequest)
     }
 
+    @GetMapping("/api/hello")
+    fun hello(): List<String>{
+        return listOf("Oi","você")
+    }
+
 }

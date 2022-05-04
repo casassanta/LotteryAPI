@@ -71,5 +71,5 @@ class LotteryService {
         }
         return games
     }
-    
+
 }
